@@ -3,588 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>aibot.gay — LGBTQ+ community AI — events, resources, safe spaces</title>
-  <meta name="description" content="Your LGBTQ+ community AI assistant. Find events, resources, safe spaces, dating tips, and community connections.">
-  <meta name="keywords" content="LGBTQ AI assistant, pride events, queer resources, safe spaces finder, LGBTQ community bot">
+  <title>aibot.gay — AI LGBTQ+ resource — community events, resources & support</title>
+  <meta name="description" content="AI-powered LGBTQ+ community resource. Find events, support resources, safe spaces, and community connections.">
   <meta property="og:title" content="aibot.gay — PrideBot">
-  <meta property="og:description" content="Your LGBTQ+ community AI assistant. Find events, resources, safe spaces, dating tips, and community connections.">
+  <meta property="og:description" content="AI-powered LGBTQ+ community resource. Find events, support resources, safe spaces, and community connections.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aibot.gay">
-  <meta property="og:image" content="https://aibot.gay/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@SpunkArt13">
-  <meta name="twitter:title" content="PrideBot — aibot.gay">
-  <meta name="twitter:description" content="LGBTQ+ community AI — events, resources, safe spaces">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏳️‍🌈</text></svg>">
   <link rel="canonical" href="https://aibot.gay">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PrideBot","url":"https://aibot.gay","description":"Your LGBTQ+ community AI assistant. Find events, resources, safe spaces, dating tips, and community connections.","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PrideBot","url":"https://aibot.gay","description":"AI-powered LGBTQ+ community resource. Find events, support resources, safe spaces, and community connections.","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
-    :root{
-      --bg:#050508;--surface:#0a0a12;--card:#0e0e18;--card-hover:#121220;
-      --border:#1a1a2e;--text:#e8e8f0;--dim:#8888a0;--muted:#555568;
-      --accent:#a855f7;--accent-glow:rgba(168,85,247,0.12);
-      --green:#10b981;--red:#ef4444;
-    }
+    :root{--bg:#050508;--surface:#0a0a12;--card:#0e0e18;--card-hover:#121220;--border:#1a1a2e;--text:#e8e8f0;--dim:#8888a0;--muted:#555568;--accent:#e879f9;--accent-glow:rgba(232,121,249,0.12);--green:#10b981;--red:#ef4444;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;}
-    a{color:var(--accent);text-decoration:none;transition:opacity 0.2s;}
-    a:hover{opacity:0.85;}
-
-    /* NAV */
+    a{color:var(--accent);text-decoration:none;transition:opacity 0.2s;}a:hover{opacity:0.85;}
     .nav{position:sticky;top:0;z-index:100;background:rgba(5,5,8,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
     .nav-inner{max-width:1000px;margin:0 auto;padding:0.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-    .nav-logo{font-size:1.1rem;font-weight:900;letter-spacing:-0.5px;display:flex;align-items:center;gap:0.4rem;}
-    .nav-logo .accent{color:var(--accent);}
+    .nav-logo{font-size:1.1rem;font-weight:900;letter-spacing:-0.5px;display:flex;align-items:center;gap:0.4rem;}.nav-logo .accent{color:var(--accent);}
     .nav-right{display:flex;align-items:center;gap:1rem;}
-    .nav-uses{font-size:0.75rem;color:var(--dim);font-weight:600;}
-    .nav-uses span{color:var(--accent);font-weight:800;}
-    .nav-upgrade{background:var(--accent);color:#fff;padding:0.4rem 0.9rem;border-radius:8px;font-size:0.75rem;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;}
-    .nav-upgrade:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(168,85,247,0.3);}
-
-    /* NETWORK BAR */
+    .nav-uses{font-size:0.75rem;color:var(--dim);font-weight:600;}.nav-uses span{color:var(--accent);font-weight:800;}
+    .nav-upgrade{background:var(--accent);color:#fff;padding:0.4rem 0.9rem;border-radius:8px;font-size:0.75rem;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;}.nav-upgrade:hover{transform:translateY(-1px);}
     .site-bar{border-bottom:1px solid var(--border);padding:0.6rem 1.5rem;display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;overflow-x:auto;}
-    .site-link{display:flex;align-items:center;gap:0.3rem;font-size:0.7rem;font-weight:700;color:var(--dim);transition:color 0.2s;white-space:nowrap;}
-    .site-link:hover{color:var(--text);}
-    .site-link .dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
-
-    /* MAIN CHAT AREA */
+    .site-link{display:flex;align-items:center;gap:0.3rem;font-size:0.7rem;font-weight:700;color:var(--dim);transition:color 0.2s;white-space:nowrap;}.site-link:hover{color:var(--text);}.site-link .dot{width:5px;height:5px;border-radius:50%;display:inline-block;}
     .chat-container{flex:1;max-width:800px;width:100%;margin:0 auto;padding:1rem 1.5rem;display:flex;flex-direction:column;}
-
-    /* WELCOME */
-    .welcome{text-align:center;padding:3rem 0 2rem;flex-shrink:0;}
-    .welcome-icon{font-size:3rem;margin-bottom:0.5rem;}
-    .welcome h1{font-size:2.2rem;font-weight:900;letter-spacing:-1.5px;margin-bottom:0.3rem;}
-    .welcome h1 .gr{background:linear-gradient(135deg,var(--accent),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .welcome{text-align:center;padding:3rem 0 2rem;flex-shrink:0;}.welcome-icon{font-size:3rem;margin-bottom:0.5rem;}
+    .welcome h1{font-size:2.2rem;font-weight:900;letter-spacing:-1.5px;margin-bottom:0.3rem;}.welcome h1 .gr{background:linear-gradient(135deg,var(--accent),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .welcome p{color:var(--dim);font-size:0.95rem;max-width:500px;margin:0 auto 1.5rem;}
     .examples{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;}
-    .example-btn{background:var(--card);border:1px solid var(--border);color:var(--dim);padding:0.5rem 1rem;border-radius:10px;font-size:0.8rem;font-family:inherit;cursor:pointer;transition:all 0.2s;max-width:280px;text-align:left;}
-    .example-btn:hover{border-color:var(--accent);color:var(--text);}
+    .example-btn{background:var(--card);border:1px solid var(--border);color:var(--dim);padding:0.5rem 1rem;border-radius:10px;font-size:0.8rem;font-family:inherit;cursor:pointer;transition:all 0.2s;max-width:280px;text-align:left;}.example-btn:hover{border-color:var(--accent);color:var(--text);}
     @media(max-width:600px){.welcome h1{font-size:1.7rem;}}
-
-    /* MESSAGES */
     .messages{flex:1;overflow-y:auto;padding:1rem 0;display:flex;flex-direction:column;gap:1rem;}
     .msg{max-width:85%;padding:1rem 1.2rem;border-radius:14px;font-size:0.88rem;line-height:1.6;animation:fadeIn 0.3s ease;}
     .msg-user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
     .msg-bot{background:var(--card);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;position:relative;}
     .msg-bot .msg-actions{display:flex;gap:0.5rem;margin-top:0.75rem;padding-top:0.5rem;border-top:1px solid var(--border);}
-    .msg-action{background:var(--surface);border:1px solid var(--border);color:var(--dim);padding:0.3rem 0.7rem;border-radius:6px;font-size:0.7rem;font-family:inherit;cursor:pointer;transition:all 0.2s;}
-    .msg-action:hover{border-color:var(--accent);color:var(--text);}
-    .typing{display:flex;gap:4px;padding:1rem;align-self:flex-start;}
-    .typing span{width:8px;height:8px;background:var(--muted);border-radius:50%;animation:bounce 1.4s infinite;}
-    .typing span:nth-child(2){animation-delay:0.2s;}
-    .typing span:nth-child(3){animation-delay:0.4s;}
+    .msg-action{background:var(--surface);border:1px solid var(--border);color:var(--dim);padding:0.3rem 0.7rem;border-radius:6px;font-size:0.7rem;font-family:inherit;cursor:pointer;transition:all 0.2s;}.msg-action:hover{border-color:var(--accent);color:var(--text);}
+    .typing{display:flex;gap:4px;padding:1rem;align-self:flex-start;}.typing span{width:8px;height:8px;background:var(--muted);border-radius:50%;animation:bounce 1.4s infinite;}.typing span:nth-child(2){animation-delay:0.2s;}.typing span:nth-child(3){animation-delay:0.4s;}
     @keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-8px);}}
     @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-
-    /* INPUT */
     .input-area{padding:1rem 0;border-top:1px solid var(--border);flex-shrink:0;}
-    .input-wrap{display:flex;gap:0.5rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0.5rem;transition:border-color 0.2s;}
-    .input-wrap:focus-within{border-color:var(--accent);}
-    .input-wrap input{flex:1;background:transparent;border:none;color:var(--text);font-size:0.9rem;font-family:inherit;padding:0.4rem 0.6rem;outline:none;}
-    .input-wrap input::placeholder{color:var(--muted);}
-    .send-btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:0.5rem 1rem;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:inherit;}
-    .send-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(168,85,247,0.3);}
-    .send-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
-
-    /* PAYWALL MODAL */
-    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:500;display:none;align-items:center;justify-content:center;padding:1.5rem;}
-    .modal-overlay.active{display:flex;}
+    .input-wrap{display:flex;gap:0.5rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0.5rem;transition:border-color 0.2s;}.input-wrap:focus-within{border-color:var(--accent);}
+    .input-wrap input{flex:1;background:transparent;border:none;color:var(--text);font-size:0.9rem;font-family:inherit;padding:0.4rem 0.6rem;outline:none;}.input-wrap input::placeholder{color:var(--muted);}
+    .send-btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:0.5rem 1rem;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:inherit;}.send-btn:hover{transform:translateY(-1px);}.send-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:500;display:none;align-items:center;justify-content:center;padding:1.5rem;}.modal-overlay.active{display:flex;}
     .modal{background:var(--card);border:1px solid var(--border);border-radius:16px;max-width:500px;width:100%;padding:2rem;text-align:center;position:relative;}
-    .modal-close{position:absolute;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);color:var(--dim);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;}
-    .modal-close:hover{color:var(--text);border-color:var(--accent);}
-    .modal h2{font-size:1.4rem;font-weight:900;margin-bottom:0.5rem;}
-    .modal p{color:var(--dim);font-size:0.85rem;margin-bottom:1.5rem;}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);color:var(--dim);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;}.modal-close:hover{color:var(--text);border-color:var(--accent);}
+    .modal h2{font-size:1.4rem;font-weight:900;margin-bottom:0.5rem;}.modal p{color:var(--dim);font-size:0.85rem;margin-bottom:1.5rem;}
     .pricing-cards{display:flex;gap:0.75rem;margin-bottom:1.5rem;}
-    .price-card{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;transition:all 0.2s;}
-    .price-card:hover,.price-card.featured{border-color:var(--accent);}
-    .price-card.featured{position:relative;}
-    .price-card.featured::before{content:'BEST VALUE';position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:0.55rem;font-weight:800;padding:0.15rem 0.5rem;border-radius:4px;letter-spacing:1px;}
-    .price-card .pc-price{font-size:1.4rem;font-weight:900;color:var(--text);}
-    .price-card .pc-period{font-size:0.7rem;color:var(--dim);display:block;}
-    .price-card .pc-desc{font-size:0.7rem;color:var(--muted);margin-top:0.3rem;}
+    .price-card{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;transition:all 0.2s;}.price-card:hover,.price-card.featured{border-color:var(--accent);}.price-card.featured{position:relative;}.price-card.featured::before{content:'BEST VALUE';position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:0.55rem;font-weight:800;padding:0.15rem 0.5rem;border-radius:4px;}
+    .price-card .pc-price{font-size:1.4rem;font-weight:900;color:var(--text);}.price-card .pc-period{font-size:0.7rem;color:var(--dim);display:block;}.price-card .pc-desc{font-size:0.7rem;color:var(--muted);margin-top:0.3rem;}
     .pay-btn{width:100%;padding:0.7rem;border-radius:10px;font-weight:700;font-size:0.9rem;border:none;cursor:pointer;transition:all 0.2s;font-family:inherit;margin-bottom:0.5rem;}
-    .pay-btn-stripe{background:var(--accent);color:#fff;}
-    .pay-btn-stripe:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(168,85,247,0.3);}
-    .pay-btn-crypto{background:var(--surface);border:1px solid var(--border);color:var(--text);}
-    .pay-btn-crypto:hover{border-color:var(--accent);}
-    .crypto-details{display:none;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-top:0.5rem;}
-    .crypto-details.active{display:block;}
-    .crypto-addr{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--accent);word-break:break-all;cursor:pointer;padding:0.4rem;background:var(--bg);border-radius:6px;margin:0.3rem 0;}
-    .crypto-label{font-size:0.7rem;color:var(--dim);font-weight:600;margin-top:0.5rem;}
-    .modal-ref{font-size:0.75rem;color:var(--dim);margin-top:1rem;}
-    .modal-ref a{color:var(--accent);}
+    .pay-btn-stripe{background:var(--accent);color:#fff;}.pay-btn-crypto{background:var(--surface);border:1px solid var(--border);color:var(--text);}.pay-btn-crypto:hover{border-color:var(--accent);}
+    .crypto-details{display:none;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-top:0.5rem;}.crypto-details.active{display:block;}
+    .crypto-addr{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--accent);word-break:break-all;cursor:pointer;padding:0.4rem;background:var(--bg);border-radius:6px;margin:0.3rem 0;}.crypto-label{font-size:0.7rem;color:var(--dim);font-weight:600;margin-top:0.5rem;}
+    .modal-ref{font-size:0.75rem;color:var(--dim);margin-top:1rem;}.modal-ref a{color:var(--accent);}
     @media(max-width:500px){.pricing-cards{flex-direction:column;}}
-
-    /* FOOTER */
-    .footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;}
-    .footer-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;}
-    .footer-links a{color:var(--muted);font-size:0.7rem;font-weight:600;}
-    .footer-links a:hover{color:var(--text);}
-    .footer-copy{font-size:0.65rem;color:var(--muted);}
+    .footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;}.footer-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;}.footer-links a{color:var(--muted);font-size:0.7rem;font-weight:600;}.footer-links a:hover{color:var(--text);}.footer-copy{font-size:0.65rem;color:var(--muted);}
   </style>
 </head>
 <body>
-
-<!-- GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
-
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-logo">🏳️‍🌈 <span class="accent">PrideBot</span></div>
-    <div class="nav-right">
-      <div class="nav-uses">Uses today: <span id="useCount">0</span> / <span id="useMax">3</span></div>
-      <button class="nav-upgrade" onclick="showPaywall()">Upgrade</button>
-    </div>
-  </div>
-</nav>
-
-<!-- NETWORK BAR -->
+<nav class="nav"><div class="nav-inner"><div class="nav-logo">🏳️‍🌈 <span class="accent">PrideBot</span></div><div class="nav-right"><div class="nav-uses">Uses today: <span id="useCount">0</span> / <span id="useMax">3</span></div><button class="nav-upgrade" onclick="showPaywall()">Upgrade</button></div></div></nav>
 <div class="site-bar">
-  <a href="https://aibot.delivery" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#f59e0b;"></span>📦 aibot.delivery</a>
-    <a href="https://aibot.directory" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#6366f1;"></span>📂 aibot.directory</a>
-    <a href="https://aibot.forum" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#ec4899;"></span>💬 aibot.forum</a>
-    <a href="https://aibot.garden" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#10b981;"></span>🌱 aibot.garden</a>
-    <span class="site-link" style="color:var(--text);"><span class="dot" style="background:#a855f7;"></span>🏳️‍🌈 aibot.gay</span>
-    <a href="https://aibot.poker" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#ef4444;"></span>🃏 aibot.poker</a>
-    <a href="https://aibot.rest" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#f97316;"></span>🍽️ aibot.rest</a>
-    <a href="https://aibot.study" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#3b82f6;"></span>📚 aibot.study</a>
-    <a href="https://aibot.tattoo" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#8b5cf6;"></span>🎨 aibot.tattoo</a>
-    <a href="https://aibot.beer" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#d97706;"></span>🍺 aibot.beer</a>
-    <a href="https://aibot.coupons" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#10b981;"></span>🏷️ aibot.coupons</a>
-    <a href="https://aibot.courses" class="site-link" target="_blank" rel="noopener noreferrer"><span class="dot" style="background:#14b8a6;"></span>🎓 aibot.courses</a>
+  <a href="https://aibot.beer" class="site-link"><span class="dot" style="background:#d97706;"></span>aibot.beer</a>
+  <a href="https://aibot.coupons" class="site-link"><span class="dot" style="background:#10b981;"></span>aibot.coupons</a>
+  <a href="https://aibot.courses" class="site-link"><span class="dot" style="background:#14b8a6;"></span>aibot.courses</a>
+  <a href="https://aibot.tattoo" class="site-link"><span class="dot" style="background:#ec4899;"></span>aibot.tattoo</a>
+  <a href="https://aibot.garden" class="site-link"><span class="dot" style="background:#22c55e;"></span>aibot.garden</a>
+  <a href="https://aibot.study" class="site-link"><span class="dot" style="background:#3b82f6;"></span>aibot.study</a>
+  <a href="https://aibot.poker" class="site-link"><span class="dot" style="background:#ef4444;"></span>aibot.poker</a>
+  <a href="https://aibot.rest" class="site-link"><span class="dot" style="background:#f97316;"></span>aibot.rest</a>
+  <a href="https://aibot.delivery" class="site-link"><span class="dot" style="background:#06b6d4;"></span>aibot.delivery</a>
+  <a href="https://aibot.directory" class="site-link"><span class="dot" style="background:#8b5cf6;"></span>aibot.directory</a>
+  <a href="https://aibot.forum" class="site-link"><span class="dot" style="background:#eab308;"></span>aibot.forum</a>
+  <a href="https://aibot.gay" class="site-link" style="color:var(--text);"><span class="dot" style="background:#e879f9;"></span>aibot.gay</a>
+  <a href="https://betai.buzz" class="site-link"><span class="dot" style="background:#ff5f1f;"></span>betai.buzz</a>
+  <span style="color:var(--muted);padding:0 0.3rem;">|</span>
+  <a href="https://stake.com/?c=MyXSehCn" class="site-link" target="_blank" rel="noopener" style="color:#1475e1;">Stake.com</a>
+  <a href="https://shuffle.com?r=q94atl9m05" class="site-link" target="_blank" rel="noopener" style="color:#7c3aed;">Shuffle</a>
+  <a href="https://spunk.bet" class="site-link" target="_blank" rel="noopener"><span class="dot" style="background:#ff5f1f;"></span>spunk.bet</a>
 </div>
-
-<!-- CHAT CONTAINER -->
 <div class="chat-container">
-  <!-- WELCOME -->
   <div class="welcome" id="welcome">
     <div class="welcome-icon">🏳️‍🌈</div>
-    <h1>Pride<span class='gr'>Bot</span></h1>
-    <p>Your LGBTQ+ community AI. Find events, resources, safe spaces, and connect with community — powered by AI.</p>
+    <h1>Pride<span class="gr">Bot</span></h1>
+    <p>AI-powered LGBTQ+ community resource. Find events, support resources, safe spaces, and community connections.</p>
     <div class="examples">
-      <button class="example-btn" onclick="askExample(this.textContent)">Find LGBTQ-friendly therapists in Chicago</button>
-      <button class="example-btn" onclick="askExample(this.textContent)">What are the best queer-owned businesses in SF?</button>
-      <button class="example-btn" onclick="askExample(this.textContent)">Help me plan a pride month celebration</button>
-      <button class="example-btn" onclick="askExample(this.textContent)">Resources for LGBTQ+ youth in Texas</button>
+      <button class="example-btn" onclick="askExample(this.textContent)">Best LGBTQ+ friendly cities to live in the US</button>
+      <button class="example-btn" onclick="askExample(this.textContent)">How to find local pride events and community groups</button>
+      <button class="example-btn" onclick="askExample(this.textContent)">Resources for LGBTQ+ youth and support hotlines</button>
+      <button class="example-btn" onclick="askExample(this.textContent)">History of the pride movement — key moments</button>
     </div>
   </div>
-
-  <!-- MESSAGES -->
   <div class="messages" id="messages"></div>
-
-  <!-- INPUT -->
-  <div class="input-area">
-    <div class="input-wrap">
-      <input type="text" id="userInput" placeholder="e.g., Find pride events near Portland this summer" autocomplete="off">
-      <button class="send-btn" id="sendBtn" onclick="sendMessage()">Ask PrideBot</button>
-    </div>
-  </div>
+  <div class="input-area"><div class="input-wrap"><input type="text" id="userInput" placeholder="e.g., LGBTQ+ friendly cities to visit in Europe" autocomplete="off"><button class="send-btn" id="sendBtn" onclick="sendMessage()">Ask PrideBot</button></div></div>
 </div>
-
-<!-- PAYWALL MODAL -->
 <div class="modal-overlay" id="paywallModal" onclick="if(event.target===this)closePaywall()">
   <div class="modal">
-    <div class="modal-close" onclick="closePaywall()">✕</div>
+    <div class="modal-close" onclick="closePaywall()">&#10005;</div>
     <h2>🏳️‍🌈 Unlock Unlimited PrideBot</h2>
     <p>You've used your 3 free daily queries. Upgrade for unlimited access.</p>
     <div class="pricing-cards">
-      <div class="price-card" onclick="selectPlan('day')" id="planDay">
-        <div class="pc-price">$2.99</div>
-        <span class="pc-period">24-hour pass</span>
-        <div class="pc-desc">Unlimited for today</div>
-      </div>
-      <div class="price-card featured" onclick="selectPlan('month')" id="planMonth">
-        <div class="pc-price">$9.99</div>
-        <span class="pc-period">per month</span>
-        <div class="pc-desc">Unlimited across ALL bots</div>
-      </div>
+      <div class="price-card" onclick="selectPlan('day')" id="planDay"><div class="pc-price">$2.99</div><span class="pc-period">24-hour pass</span><div class="pc-desc">Unlimited for today</div></div>
+      <div class="price-card featured" onclick="selectPlan('month')" id="planMonth"><div class="pc-price">$9.99</div><span class="pc-period">per month</span><div class="pc-desc">Unlimited across ALL bots</div></div>
     </div>
     <button class="pay-btn pay-btn-stripe" onclick="payStripe()">Pay with Card</button>
     <button class="pay-btn pay-btn-crypto" onclick="toggleCrypto()">Pay with Crypto</button>
     <div class="crypto-details" id="cryptoDetails">
       <div class="crypto-label">Bitcoin (BTC)</div>
-      <div class="crypto-addr" onclick="copyAddr(this)" title="Click to copy">bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm</div>
+      <div class="crypto-addr" onclick="copyAddr(this)">bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm</div>
       <div class="crypto-label">Ethereum (ETH)</div>
-      <div class="crypto-addr" onclick="copyAddr(this)" title="Click to copy">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</div>
-      <div style="font-size:0.65rem;color:var(--muted);margin-top:0.5rem;">Send exact amount + email us at pay@aibot.delivery for activation</div>
+      <div class="crypto-addr" onclick="copyAddr(this)">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</div>
+      <div style="font-size:0.65rem;color:var(--muted);margin-top:0.5rem;">Send exact amount + email contact@spunkart.com for activation</div>
     </div>
-    <div class="modal-ref">
-      Share &amp; earn! <a href="#" onclick="shareRef();return false;">Get your referral link</a> — 5 free uses for you and your friend.
-    </div>
+    <div class="modal-ref">Share &amp; earn! <a href="#" onclick="shareRef();return false;">Get your referral link</a> — 5 free uses for you and your friend.</div>
   </div>
 </div>
-
-<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-links">
-    <a href="https://aibot.delivery">aibot.delivery</a>
-    <a href="https://aibot.directory">aibot.directory</a>
-    <a href="https://aibot.forum">aibot.forum</a>
-    <a href="https://aibot.garden">aibot.garden</a>
-    <a href="https://aibot.poker">aibot.poker</a>
-    <a href="https://aibot.rest">aibot.rest</a>
-    <a href="https://aibot.study">aibot.study</a>
-    <a href="https://aibot.tattoo">aibot.tattoo</a>
+  <div class="footer-links" style="margin-bottom:0.3rem">
     <a href="https://aibot.beer">aibot.beer</a>
     <a href="https://aibot.coupons">aibot.coupons</a>
     <a href="https://aibot.courses">aibot.courses</a>
-    <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" style="color:#0052ff;font-weight:600;">Buy Crypto</a>
+    <a href="https://aibot.tattoo">aibot.tattoo</a>
+    <a href="https://aibot.garden">aibot.garden</a>
+    <a href="https://aibot.study">aibot.study</a>
+    <a href="https://aibot.poker">aibot.poker</a>
+    <a href="https://aibot.rest">aibot.rest</a>
+    <a href="https://aibot.delivery">aibot.delivery</a>
+    <a href="https://aibot.directory">aibot.directory</a>
+    <a href="https://aibot.forum">aibot.forum</a>
+    <a href="https://aibot.gay">aibot.gay</a>
+    <a href="https://betai.buzz">betai.buzz</a>
+  </div>
+  <div class="footer-links" style="margin-bottom:0.3rem;font-size:0.6rem">
+    <a href="https://predict.pics">predict.pics</a>
+    <a href="https://predict.horse">predict.horse</a>
+    <a href="https://scam.video">scam.video</a>
+    <a href="https://stimulant.wiki">stimulant.wiki</a>
+    <a href="https://spunk.bet" style="color:#ff5f1f">spunk.bet</a>
+    <a href="https://spunkart.com">spunkart.com</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://stake.com/?c=MyXSehCn" target="_blank" rel="noopener sponsored" style="color:#1475e1;font-weight:700;">Stake.com</a>
+    <a href="https://shuffle.com?r=q94atl9m05" target="_blank" rel="noopener sponsored" style="color:#7c3aed;font-weight:700;">Shuffle</a>
+    <a href="https://stake.us/?c=L2a8nG6c" target="_blank" rel="noopener sponsored" style="color:#00c74d;font-weight:600;">Stake.us</a>
+    <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" style="color:#ff5f1f;font-weight:600;">Winna.com</a>
+    <a href="https://coinbase.com/join/YAGES3X" target="_blank" rel="noopener sponsored" style="color:#0052ff;font-weight:600;">Buy Crypto</a>
     <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" style="color:#ff5500;font-weight:600;">Secure Crypto</a>
     <a href="https://kalshi.com/sign-up/?referral=6b723b42-d0c9-4421-9b4e-5af4b4c6c42c" target="_blank" rel="noopener sponsored" style="color:#00d084;font-weight:600;">Kalshi</a>
+    <a href="https://customgpt.ai/?fpr=spunk" target="_blank" rel="noopener sponsored" style="color:#06b6d4;font-weight:600;">CustomGPT</a>
     <a href="https://everyx.io/register?ref=AYHl4YqvjcaX" target="_blank" rel="noopener sponsored" style="color:#a855f7;font-weight:600;">EveryX</a>
-    <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" style="color:#ff5f1f;font-weight:600;">Winna.com</a>
-    <a href="https://stake.us/?c=L2a8nG6c" target="_blank" rel="noopener sponsored" style="color:#00c74d;font-weight:600;">Stake.us</a>
-    <a href="https://spunk.bet" target="_blank" rel="noopener sponsored" style="color:#ff5f1f;font-weight:600;">Spunk.Bet</a>
     <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
   </div>
   <div class="footer-copy">&copy; 2026 aibot.gay — PrideBot by @SpunkArt13 | <a href="https://spunkart.com">SpunkArt.com</a></div>
+  <div style="max-width:500px;margin:2rem auto;padding:1.5rem;background:#0a0a12;border:1px solid #1a1a2e;border-radius:12px;text-align:center;">
+    <h3 style="margin:0 0 0.5rem;font-size:1rem;color:#e8e8f0;">Stay Updated</h3>
+    <p style="margin:0 0 1rem;font-size:0.8rem;color:#8888a0;">Get the latest tips, deals, and updates.</p>
+    <iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;background-color:transparent;width:100%;max-width:400px;"></iframe>
+  </div>
 </footer>
-
 <script>
-// ============================================================
-// CONFIG
-// ============================================================
-const BOT_NAME = 'PrideBot';
-const DOMAIN = 'aibot.gay';
-const SLUG = 'gay';
-const SHARE_TEXT = 'PrideBot helped me find amazing LGBTQ+ resources! 🏳️‍🌈';
-const SYSTEM_PROMPT = `You are PrideBot, an AI assistant for the LGBTQ+ community. Help users find pride events, LGBTQ-friendly businesses and services, community resources, support organizations, safe spaces, and dating advice. Be warm, inclusive, affirming, and helpful. Provide specific, actionable information.`;
-const FREE_USES = 3;
-const REFERRAL_BONUS = 5;
+const BOT_NAME='PrideBot';const DOMAIN='aibot.gay';const SLUG='gay';const SHARE_TEXT='PrideBot is an amazing LGBTQ+ resource! Check it out!';const FREE_USES=3;const REFERRAL_BONUS=5;
+function getToday(){return new Date().toISOString().split('T')[0];}
+function getUsage(){const d=JSON.parse(localStorage.getItem('aibot_usage')||'{}');if(d.date!==getToday()){d.date=getToday();d.count=0;localStorage.setItem('aibot_usage',JSON.stringify(d));}return d;}
+function incrementUsage(){const d=getUsage();d.count++;localStorage.setItem('aibot_usage',JSON.stringify(d));updateUsageDisplay();}
+function getRemainingUses(){const d=getUsage();const b=parseInt(localStorage.getItem('aibot_bonus')||'0');return FREE_USES+b-d.count;}
+function isPaid(){const s=JSON.parse(localStorage.getItem('aibot_subscription')||'{}');if(s.type==='month'&&new Date(s.expires)>new Date())return true;if(s.type==='day'&&new Date(s.expires)>new Date())return true;return false;}
+function updateUsageDisplay(){const d=getUsage();const b=parseInt(localStorage.getItem('aibot_bonus')||'0');document.getElementById('useCount').textContent=d.count;document.getElementById('useMax').textContent=isPaid()?'\u221e':FREE_USES+b;}
+const messagesEl=document.getElementById('messages');const welcomeEl=document.getElementById('welcome');const inputEl=document.getElementById('userInput');const sendBtn=document.getElementById('sendBtn');
+function askExample(text){inputEl.value=text;sendMessage();}
+async function sendMessage(){const text=inputEl.value.trim();if(!text)return;if(!isPaid()&&getRemainingUses()<=0){showPaywall();return;}welcomeEl.style.display='none';addMessage(text,'user');inputEl.value='';sendBtn.disabled=true;const typingEl=showTyping();incrementUsage();try{const r=await generateResponse(text);typingEl.remove();addBotMessage(r);}catch(e){typingEl.remove();addBotMessage("Sorry, I'm having trouble. Please try again.");}sendBtn.disabled=false;inputEl.focus();}
+function addMessage(text,type){const m=document.createElement('div');m.className=`msg msg-${type}`;m.textContent=text;messagesEl.appendChild(m);messagesEl.scrollTop=messagesEl.scrollHeight;}
+function addBotMessage(text){const m=document.createElement('div');m.className='msg msg-bot';let f=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n- /g,'\n\u2022 ').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');m.innerHTML=`<div>${f}</div><div class="msg-actions"><button class="msg-action" onclick="shareOnX()">Share on X</button><button class="msg-action" onclick="copyResponse(this)">Copy</button></div>`;messagesEl.appendChild(m);messagesEl.scrollTop=messagesEl.scrollHeight;}
+function showTyping(){const t=document.createElement('div');t.className='typing';t.innerHTML='<span></span><span></span><span></span>';messagesEl.appendChild(t);messagesEl.scrollTop=messagesEl.scrollHeight;return t;}
+async function generateResponse(q){await new Promise(r=>setTimeout(r,800+Math.random()*1200));return generateSmartResponse(q);}
+function generateSmartResponse(query){const q=query.toLowerCase();const responses=getResponses();let bestMatch=null,bestScore=0;for(const [keywords,response] of responses){const score=keywords.filter(k=>q.includes(k)).length;if(score>bestScore){bestScore=score;bestMatch=response;}}if(bestMatch)return bestMatch;return generateContextualResponse(query);}
+function getResponses(){return [
+  [["city", "cities", "live", "move", "relocate", "friendly", "safe"], `**LGBTQ+ Friendly Cities Guide**\n\n**Top US Cities:**\n1. **San Francisco, CA**: Historic LGBTQ+ capital, Castro District, highest per-capita LGBTQ+ population\n2. **New York, NY**: Stonewall birthplace, massive community, Greenwich Village\n3. **Los Angeles, CA**: West Hollywood, diverse, entertainment industry\n4. **Portland, OR**: Progressive, affordable(ish), great queer culture\n5. **Minneapolis, MN**: Strong protections, vibrant scene, affordable\n6. **Denver, CO**: Growing community, outdoor lifestyle, welcoming\n7. **Austin, TX**: Blue dot in Texas, great nightlife, growing community\n8. **Seattle, WA**: Capitol Hill neighborhood, progressive policies\n9. **Chicago, IL**: Boystown/Northalsted, diverse, affordable vs coasts\n10. **Philadelphia, PA**: Gayborhood, historic, affordable East Coast option\n\n**International:**\n- Amsterdam, Copenhagen, Berlin, London, Barcelona, Tel Aviv, Montreal, Sydney\n\n**Research Tools:**\n- HRC Municipal Equality Index\n- Equaldex.com (country-by-country laws)\n- LGBTQ+ travel advisories\n\nAsk about a specific city and I'll give you details!`],
+  [["pride", "event", "festival", "parade", "celebration", "march"], `**Pride Events Guide**\n\n**Major US Pride Events:**\n- **NYC Pride** (June): Largest in US, 2M+ attendees, world-famous march\n- **SF Pride** (June): Iconic, 1M+ people, huge street festival\n- **LA Pride** (June): West Hollywood, parade + festival\n- **Chicago Pride** (June): Boystown, amazing parade\n- **Austin Pride** (August): Growing, inclusive, diverse\n- **Atlanta Black Pride** (September): Largest Black LGBTQ+ gathering\n\n**International:**\n- **Sao Paulo** (June): World's largest pride, 3M+ people\n- **Amsterdam** (August): Canal parade on boats, unique\n- **Sydney Mardi Gras** (February): Iconic, colorful, massive\n- **Berlin CSD** (July): Christopher Street Day, legendary\n- **Tel Aviv Pride** (June): Middle East's largest, beach party\n\n**Finding Local Events:**\n- LGBTQ+ community centers\n- Meetup.com LGBTQ+ groups\n- Local LGBTQ+ Facebook groups\n- Pride center websites\n- OutRight Action International\n\n**First Pride Tips:** Wear sunscreen, bring water, go with friends, have fun, be yourself!`],
+  [["resource", "support", "help", "hotline", "crisis", "coming out", "mental health"], `**LGBTQ+ Support Resources**\n\n**Crisis Lines:**\n- **Trevor Project** (youth): 1-866-488-7386 or text START to 678-678\n- **988 Suicide & Crisis Lifeline**: Call or text 988\n- **Trans Lifeline**: 877-565-8860\n- **Crisis Text Line**: Text HOME to 741741\n\n**Coming Out Support:**\n- **PFLAG**: pflag.org — for families, allies, and LGBTQ+ individuals\n- **It Gets Better Project**: itgetsbetter.org\n- **HRC Coming Out Guide**: hrc.org/resources/coming-out\n- **The Trevor Project**: Resources specifically for LGBTQ+ youth\n\n**Health:**\n- **GLMA**: Find LGBTQ+-friendly healthcare providers\n- **Planned Parenthood**: Affirming care, HRT, testing\n- **FOLX Health**: Online LGBTQ+ healthcare\n- **Plume**: Telehealth for trans healthcare\n\n**Legal:**\n- **Lambda Legal**: LGBTQ+ legal rights\n- **ACLU**: Civil liberties advocacy\n- **Transgender Law Center**: Trans-specific legal help\n\n**Community:**\n- Local LGBTQ+ centers (findable on lgbtcenters.org)\n- Meetup.com LGBTQ+ groups\n- Discord servers and online communities\n\nYou are valid. You are loved. You are not alone.`],
+  [["history", "stonewall", "movement", "rights", "marriage", "equality", "activism"], `**LGBTQ+ History & Rights**\n\n**Key Moments:**\n- **1924**: Society for Human Rights (first US LGBTQ+ org)\n- **1969**: Stonewall Riots — birth of modern LGBTQ+ rights movement\n- **1973**: Homosexuality removed from DSM\n- **1978**: Rainbow flag created by Gilbert Baker\n- **1981**: First AIDS cases reported\n- **1987**: ACT UP founded — AIDS activism\n- **1996**: DOMA signed (later struck down)\n- **2003**: Lawrence v. Texas — sodomy laws struck down\n- **2010**: Don't Ask Don't Tell repealed\n- **2013**: DOMA struck down (Windsor v. US)\n- **2015**: Marriage equality nationwide (Obergefell v. Hodges)\n- **2020**: Bostock v. Clayton — employment discrimination protections\n\n**Pioneers:**\n- Marsha P. Johnson & Sylvia Rivera (Stonewall, trans rights)\n- Harvey Milk (first openly gay elected official in CA)\n- Bayard Rustin (civil rights leader, March on Washington organizer)\n- Audre Lorde (poet, feminist, activist)\n- Laverne Cox (trans visibility, Orange is the New Black)\n\nKnow your history. It empowers your future.`],
+  [["travel", "vacation", "trip", "visit", "destination", "beach"], `**LGBTQ+ Travel Guide**\n\n**Most Welcoming Destinations:**\n\n**Beach/Resort:**\n- Mykonos, Greece — iconic LGBTQ+ island paradise\n- Sitges, Spain — charming beach town near Barcelona\n- Fire Island, NY — legendary LGBTQ+ beach community\n- Provincetown, MA — classic, welcoming, beautiful\n- Puerto Vallarta, Mexico — Zona Romantica = gay neighborhood\n\n**Cities:**\n- Berlin, Germany — legendary nightlife, very accepting\n- Amsterdam, Netherlands — progressive, canal charm\n- Barcelona, Spain — Eixample neighborhood, culture + beach\n- London, UK — Soho, diverse, historical\n- Montreal, Canada — The Village, bilingual, vibrant\n\n**Safety Tips:**\n- Research destination laws on Equaldex.com\n- Avoid countries where homosexuality is criminalized\n- Use LGBTQ+ travel agencies (Detours Travel, Out Adventures)\n- Book LGBTQ+-friendly accommodation (misterb&b, Purple Roofs)\n- Connect with local LGBTQ+ groups before traveling\n\n**Travel Apps:**\n- misterb&b (LGBTQ+ Airbnb alternative)\n- Lex (community connections)\n- Travel advisories: IGLTA.org`],
+  [["date", "dating", "relationship", "app", "meet", "partner", "tinder", "grindr", "hinge"], `**LGBTQ+ Dating Guide**\n\n**Best Dating Apps:**\n- **Hinge**: Relationship-focused, all orientations\n- **Bumble**: Women/nonbinary make first move option\n- **Tinder**: Largest user base, all orientations\n- **Grindr**: Primarily gay/bi men, hookup/dating\n- **HER**: Women + nonbinary, community-focused\n- **Lex**: Text-based, queer community connections\n- **Feeld**: Open-minded, all orientations, ethical non-monogamy\n- **Scruff**: Gay/bi men, beard-friendly, travel features\n\n**Profile Tips:**\n- Recent photos (within 6 months)\n- Show your personality, not just your face\n- Be clear about what you're looking for\n- Mention interests and hobbies\n- Be honest about intentions\n\n**Safety:**\n- Meet in public first\n- Tell a friend where you're going\n- Video call before meeting\n- Trust your instincts\n\n**Finding Community (Beyond Apps):**\n- LGBTQ+ sports leagues\n- Book clubs, hiking groups\n- Volunteer at LGBTQ+ organizations\n- Community center events\n- Pride events and festivals`]
+];}
 
-// ============================================================
-// USAGE TRACKING (localStorage + fingerprint)
-// ============================================================
-function getToday() {
-  return new Date().toISOString().split('T')[0];
-}
-
-function getUsage() {
-  const data = JSON.parse(localStorage.getItem('aibot_usage') || '{}');
-  if (data.date !== getToday()) {
-    data.date = getToday();
-    data.count = 0;
-    localStorage.setItem('aibot_usage', JSON.stringify(data));
-  }
-  return data;
-}
-
-function incrementUsage() {
-  const data = getUsage();
-  data.count++;
-  localStorage.setItem('aibot_usage', JSON.stringify(data));
-  updateUsageDisplay();
-  return data.count;
-}
-
-function getRemainingUses() {
-  const data = getUsage();
-  const bonus = parseInt(localStorage.getItem('aibot_bonus') || '0');
-  const maxUses = FREE_USES + bonus;
-  return maxUses - data.count;
-}
-
-function isPaid() {
-  const sub = JSON.parse(localStorage.getItem('aibot_subscription') || '{}');
-  if (sub.type === 'month' && new Date(sub.expires) > new Date()) return true;
-  if (sub.type === 'day' && new Date(sub.expires) > new Date()) return true;
-  return false;
-}
-
-function updateUsageDisplay() {
-  const data = getUsage();
-  const bonus = parseInt(localStorage.getItem('aibot_bonus') || '0');
-  const maxUses = FREE_USES + bonus;
-  document.getElementById('useCount').textContent = data.count;
-  document.getElementById('useMax').textContent = isPaid() ? '∞' : maxUses;
-}
-
-// ============================================================
-// CHAT FUNCTIONALITY
-// ============================================================
-const messagesEl = document.getElementById('messages');
-const welcomeEl = document.getElementById('welcome');
-const inputEl = document.getElementById('userInput');
-const sendBtn = document.getElementById('sendBtn');
-
-function askExample(text) {
-  inputEl.value = text;
-  sendMessage();
-}
-
-async function sendMessage() {
-  const text = inputEl.value.trim();
-  if (!text) return;
-
-  // Check usage
-  if (!isPaid() && getRemainingUses() <= 0) {
-    showPaywall();
-    return;
-  }
-
-  // Hide welcome, show messages
-  welcomeEl.style.display = 'none';
-
-  // Add user message
-  addMessage(text, 'user');
-  inputEl.value = '';
-  sendBtn.disabled = true;
-
-  // Show typing indicator
-  const typingEl = showTyping();
-
-  // Increment usage
-  incrementUsage();
-
-  // Generate AI response (simulated — replace with real API call)
-  try {
-    const response = await generateResponse(text);
-    typingEl.remove();
-    addBotMessage(response);
-  } catch (err) {
-    typingEl.remove();
-    addBotMessage("Sorry, I'm having trouble right now. Please try again in a moment.");
-  }
-
-  sendBtn.disabled = false;
-  inputEl.focus();
-}
-
-function addMessage(text, type) {
-  const msg = document.createElement('div');
-  msg.className = `msg msg-${type}`;
-  msg.textContent = text;
-  messagesEl.appendChild(msg);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
-}
-
-function addBotMessage(text) {
-  const msg = document.createElement('div');
-  msg.className = 'msg msg-bot';
-
-  // Format response (basic markdown-like formatting)
-  let formatted = text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n- /g, '\n• ')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
-
-  msg.innerHTML = `
-    <div>${formatted}</div>
-    <div class="msg-actions">
-      <button class="msg-action" onclick="shareOnX('${encodeURIComponent(text.substring(0, 100))}')">Share on X</button>
-      <button class="msg-action" onclick="copyResponse(this)">Copy</button>
-    </div>
-  `;
-  messagesEl.appendChild(msg);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
-}
-
-function showTyping() {
-  const typing = document.createElement('div');
-  typing.className = 'typing';
-  typing.innerHTML = '<span></span><span></span><span></span>';
-  messagesEl.appendChild(typing);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
-  return typing;
-}
-
-// ============================================================
-// AI RESPONSE GENERATION
-// ============================================================
-// This generates intelligent responses client-side for the free tier.
-// For production, replace with actual API calls to Claude/OpenAI.
-async function generateResponse(query) {
-  // Simulate API delay
-  await new Promise(r => setTimeout(r, 1000 + Math.random() * 1500));
-
-  // Smart template-based responses (free tier)
-  // Replace this entire function with real API call for paid tier:
-  //
-  // const res = await fetch('/api/chat', {
-  //   method: 'POST',
-  //   headers: {'Content-Type': 'application/json'},
-  //   body: JSON.stringify({ message: query, system: SYSTEM_PROMPT })
-  // });
-  // const data = await res.json();
-  // return data.response;
-
-  return generateSmartResponse(query);
-}
-
-function generateSmartResponse(query) {
+function generateContextualResponse(query) {
   const q = query.toLowerCase();
-  const responses = getResponses();
-
-  // Try to match a keyword-based response
-  for (const [keywords, response] of responses) {
-    if (keywords.some(k => q.includes(k))) {
-      return response;
-    }
+  if (q.match(/coming out|come out|tell my/)) {
+    return `**Coming Out Guide**\n\nFirst: There is no "right" way or time to come out. Your safety and comfort come first.\n\n**When You're Ready:**\n1. Start with someone you trust most (friend, sibling, counselor)\n2. Choose a private, calm setting\n3. Be direct but gentle: "I want to share something important with you"\n4. Give them time to process (their reaction may not be immediate)\n5. Have resources ready (PFLAG.org for parents/family)\n\n**Safety First:**\n- If you depend on unsupportive family for housing/finances, it's OK to wait\n- Have a safety plan if you fear negative reactions\n- Trevor Project crisis line: 1-866-488-7386\n- You don't owe anyone your coming out on their timeline\n\n**Remember:**\n- Coming out is a process, not a one-time event\n- You don't have to come out to everyone at once\n- It's OK to come out to some people and not others\n- Your identity is valid regardless of anyone's reaction\n- It often gets better with time — people may need time to adjust\n\n**You are brave. You are valid. You are loved.**`;
   }
-
-  // Default response
-  return `Great question! Here's what ${BOT_NAME} thinks:\n\n` +
-    `Based on your query about "${query.substring(0, 50)}...", here are some key points:\n\n` +
-    `**1. Overview**\nThis is a topic with several important considerations. Let me break it down for you.\n\n` +
-    `**2. Key Factors**\n- Consider your specific needs and context\n- Research current options and pricing\n- Look at reviews and recommendations from trusted sources\n- Compare at least 3 alternatives before deciding\n\n` +
-    `**3. Recommendation**\nFor the most detailed, personalized answer, upgrade to unlimited ${BOT_NAME} access. Our AI will give you specific, actionable advice tailored to your exact situation.\n\n` +
-    `Want a more specific answer? Try asking with more details about your situation!`;
+  return `**PrideBot's Take: "${query.substring(0,60)}"**\n\nGreat question! Here's what I can share:\n\n**LGBTQ+ Resources:**\n- **Trevor Project**: 1-866-488-7386 (youth crisis line)\n- **PFLAG**: Support for families and allies\n- **It Gets Better Project**: Hope and inspiration\n- **GLAAD**: Media advocacy and resources\n\n**I can help with:**\n- "LGBTQ+ friendly cities to live/visit"\n- "Coming out advice and support"\n- "Finding local pride events and community"\n- "LGBTQ+ history and rights"\n- "Dating apps and relationship advice"\n- "Resources for trans healthcare"\n- "Safe travel destinations"\n\n**Community Connections:**\n- Local LGBTQ+ centers: lgbtcenters.org\n- Meetup groups in your area\n- Online communities (Discord, Reddit)\n- Volunteer opportunities\n\nYou belong here. Ask me anything!`;
 }
-
-function getResponses() {
-  // Site-specific response templates
-  return [
-  [["pride", "event", "parade", "festival"], `**Finding Pride Events Near You**
-
-**Major Pride Celebrations:**
-- **NYC Pride** (June) — Largest in the US, 2M+ attendees
-- **SF Pride** (June) — The original, iconic parade
-- **LA Pride** (June) — WeHo festival + parade
-- **Chicago Pride** (June) — Boystown celebration
-
-**How to Find Local Events:**
-- **pridefinder.com** — Searchable database of pride events globally
-- Local LGBTQ+ centers (Google '[city] LGBTQ center')
-- Facebook Events (search 'Pride [city] [year]')
-- Meetup.com LGBTQ+ groups
-
-**Beyond June:**
-- National Coming Out Day (Oct 11)
-- Spirit Day (Oct, anti-bullying)
-- Trans Day of Visibility (March 31)
-- Transgender Day of Remembrance (Nov 20)
-
-**Safety Tip:** Check local advisories for your area. The Trevor Project (thetrevorproject.org) has resources if you need support.`],
-  [["therapist", "counselor", "mental health", "support"], `**Finding LGBTQ-Affirming Therapists**
-
-**Best Resources:**
-- **Psychology Today**: Filter by 'LGBTQ+' specialty — largest database
-- **GLMA Provider Directory**: glma.org — LGBTQ healthcare providers
-- **OutCare**: outcarehealth.org — verified affirming providers
-- **Pride Counseling**: Online therapy specifically for LGBTQ+ individuals
-
-**What to Look For:**
-- Specific LGBTQ+ training or certification
-- Listed as affirming on their profile
-- Ask directly: 'What experience do you have with LGBTQ+ clients?'
-- They should never try to change your orientation/identity
-
-**Affordable Options:**
-- Open Path Collective ($30-80/session)
-- BetterHelp/Talkspace (sliding scale available)
-- Community health centers (often have LGBTQ-specific programs)
-- University clinics (supervised students at reduced rates)
-
-**Crisis Support:** The Trevor Project: 1-866-488-7386 or text START to 678-678`]
-];
-}
-
-// ============================================================
-// SHARE & REFERRAL
-// ============================================================
-function shareOnX(preview) {
-  const text = `${SHARE_TEXT}\n\nTry it free: https://${DOMAIN}?ref=${getRefCode()}\n\n@SpunkArt13`;
-  window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
-  if (typeof gtag === 'function') gtag('event', 'share_x', { bot: SLUG });
-}
-
-function copyResponse(btn) {
-  const text = btn.closest('.msg-bot').querySelector('div').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  });
-}
-
-function getRefCode() {
-  let code = localStorage.getItem('aibot_ref_code');
-  if (!code) {
-    code = SLUG + '_' + Math.random().toString(36).substring(2, 10);
-    localStorage.setItem('aibot_ref_code', code);
-  }
-  return code;
-}
-
-function shareRef() {
-  const url = `https://${DOMAIN}?ref=${getRefCode()}`;
-  navigator.clipboard.writeText(url).then(() => alert('Referral link copied! Share it to earn 5 bonus uses.'));
-}
-
-// Check for referral on load
-(function checkRef() {
-  const params = new URLSearchParams(window.location.search);
-  const ref = params.get('ref');
-  if (ref && !localStorage.getItem('aibot_ref_used')) {
-    const bonus = parseInt(localStorage.getItem('aibot_bonus') || '0');
-    localStorage.setItem('aibot_bonus', bonus + REFERRAL_BONUS);
-    localStorage.setItem('aibot_ref_used', ref);
-    if (typeof gtag === 'function') gtag('event', 'referral_activated', { ref_code: ref, bot: SLUG });
-  }
-})();
-
-// ============================================================
-// PAYWALL
-// ============================================================
-let selectedPlan = 'month';
-
-function showPaywall() {
-  document.getElementById('paywallModal').classList.add('active');
-  selectPlan('month');
-}
-
-function closePaywall() {
-  document.getElementById('paywallModal').classList.remove('active');
-}
-
-function selectPlan(plan) {
-  selectedPlan = plan;
-  document.getElementById('planDay').style.borderColor = plan === 'day' ? 'var(--accent)' : 'var(--border)';
-  document.getElementById('planMonth').style.borderColor = plan === 'month' ? 'var(--accent)' : 'var(--border)';
-}
-
-function payStripe() {
-  // Placeholder — integrate Stripe Checkout
-  // window.location.href = `https://checkout.stripe.com/...?plan=${selectedPlan}`;
-  alert('Stripe payments coming soon! For now, use crypto or contact @SpunkArt13 on X.');
-}
-
-function toggleCrypto() {
-  document.getElementById('cryptoDetails').classList.toggle('active');
-}
-
-function copyAddr(el) {
-  navigator.clipboard.writeText(el.textContent).then(() => {
-    const orig = el.textContent;
-    el.textContent = 'Copied!';
-    setTimeout(() => el.textContent = orig, 2000);
-  });
-}
-
-// ============================================================
-// INIT
-// ============================================================
+function shareOnX(){const t=`${SHARE_TEXT}\n\nTry it free: https://${DOMAIN}?ref=${getRefCode()}\n\n@SpunkArt13`;window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(t)}`,'_blank');if(typeof gtag==='function')gtag('event','share_x',{bot:SLUG});}
+function copyResponse(btn){const t=btn.closest('.msg-bot').querySelector('div').textContent;navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);});}
+function getRefCode(){let c=localStorage.getItem('aibot_ref_code');if(!c){c=SLUG+'_'+Math.random().toString(36).substring(2,10);localStorage.setItem('aibot_ref_code',c);}return c;}
+function shareRef(){const u=`https://${DOMAIN}?ref=${getRefCode()}`;navigator.clipboard.writeText(u).then(()=>alert('Referral link copied!'));}
+(function checkRef(){const p=new URLSearchParams(window.location.search);const r=p.get('ref');if(r&&!localStorage.getItem('aibot_ref_used')){const b=parseInt(localStorage.getItem('aibot_bonus')||'0');localStorage.setItem('aibot_bonus',b+REFERRAL_BONUS);localStorage.setItem('aibot_ref_used',r);}})();
+let selectedPlan='month';
+function showPaywall(){document.getElementById('paywallModal').classList.add('active');selectPlan('month');}
+function closePaywall(){document.getElementById('paywallModal').classList.remove('active');}
+function selectPlan(p){selectedPlan=p;document.getElementById('planDay').style.borderColor=p==='day'?'var(--accent)':'var(--border)';document.getElementById('planMonth').style.borderColor=p==='month'?'var(--accent)':'var(--border)';}
+function payStripe(){alert('Stripe payments coming soon! Use crypto or contact @SpunkArt13 on X.');}
+function toggleCrypto(){document.getElementById('cryptoDetails').classList.toggle('active');}
+function copyAddr(el){navigator.clipboard.writeText(el.textContent).then(()=>{const o=el.textContent;el.textContent='Copied!';setTimeout(()=>el.textContent=o,2000);});}
 updateUsageDisplay();
-
-inputEl.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    sendMessage();
-  }
-});
-
-// Referral tracking
-const urlParams = new URLSearchParams(window.location.search);
-const ref = urlParams.get('ref');
-if (ref) {
-  localStorage.setItem('aibot_ref', ref);
-  if (typeof gtag === 'function') gtag('event', 'referral_visit', { referral_code: ref, source: SLUG });
-}
+inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}});
+const urlParams=new URLSearchParams(window.location.search);const ref=urlParams.get('ref');if(ref){localStorage.setItem('aibot_ref',ref);if(typeof gtag==='function')gtag('event','referral_visit',{referral_code:ref,source:SLUG});}
 </script>
 </body>
 </html>
